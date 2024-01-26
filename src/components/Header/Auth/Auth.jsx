@@ -30,16 +30,23 @@ export const Auth = () => {
     <>
       {loading ? (
         <Spinner size={34} color='#36d7b7' />
-      ) : auth.data.name ? (
+      ) : auth?.data?.name ? (
         <div className={style.info}>
-          <button className={style.login} type='button' onClick={getOut}>
+          <a
+            className={style.link}
+            target='_blank'
+            href={`https://unsplash.com/@${auth?.data?.username}`}
+            rel='noreferrer'>
             <img
               className={style.img}
-              src={auth.data.img}
-              title={auth.data.name}
+              src={auth?.data?.img}
+              title={auth?.data?.name}
               alt={`Аватар ${auth.data.name}`}
             />
-            <p>{auth.data.name}</p>
+          </a>
+
+          <button className={style.login} type='button' onClick={getOut}>
+            {auth?.data?.name}
           </button>
           {showLogout && (
             <button className={style.logout} onClick={logout}>

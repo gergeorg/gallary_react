@@ -7,7 +7,7 @@ import { Auth } from './Auth/Auth';
 export const Header = () => (
   <header className={style.header}>
     <Container className={style.container}>
-      <a href='/'>
+      <a href='/' className={style.logo}>
         <Logo />
       </a>
       <Auth />

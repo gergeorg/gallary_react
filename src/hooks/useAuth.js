@@ -5,7 +5,6 @@ import { authLogout } from '../store/auth/authSlice';
 
 export const useAuth = () => {
   const auth = useSelector((state) => state.auth);
-  console.log('auth: ', auth);
   const token = useSelector((state) => state.token.token);
   const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();

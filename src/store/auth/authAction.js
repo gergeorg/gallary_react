@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 import { API_URL } from '../../api/const';
-// import { deleteToken, updateToken } from '../token/tokenReducer';
-// import authSlice from './authSlice';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const authRequest = createAsyncThunk('auth/fetch', (_, { getState }) => {
@@ -15,9 +13,9 @@ export const authRequest = createAsyncThunk('auth/fetch', (_, { getState }) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then(({ data: { name, profile_image: iconImg } }) => {
+    .then(({ data: { name, profile_image: iconImg, username } }) => {
       const img = iconImg.small.replace(/\?.*$/, '');
-      const data = { name, img };
+      const data = { name, img, username };
       return data;
     })
     .catch((error) => {
