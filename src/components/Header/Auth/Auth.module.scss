@@ -1,0 +1,39 @@
+.auth {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  svg {
+    transition: color 0.3s ease-in-out;
+  }
+
+  &:hover {
+    svg {
+      color: #535bf2;
+    }
+  }
+}
+
+.img {
+  display: block;
+  height: 34px;
+  width: 34px;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 10px;
+  background-color: #242424;
+}
+
+.logout {
+  padding: 10px 15px;
+  background-color: #242424;
+}
+
+.info {
+  display: flex;
+  gap: 15px;
+}

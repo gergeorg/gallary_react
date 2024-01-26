@@ -1,31 +1,16 @@
 .header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	background-color: #c0f0f0;
-	z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #c0f0f0;
+  z-index: 10;
 }
 
 .container {
-	display: flex;
-	justify-content: space-between;
-}
-
-.loginButton {
-	height: 34px;
-	width: 34px;
-	display: block;
-	padding: 0;
-	border: none;
-	cursor: pointer;
-	background-color: transparent;
-	// padding-left: 40px;
-
-}
-
-.loginImg {
-	display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
