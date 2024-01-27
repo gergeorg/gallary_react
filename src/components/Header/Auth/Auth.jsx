@@ -3,9 +3,13 @@ import style from './Auth.module.scss';
 import { useState } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { deleteToken } from '../../../store/token/tokenReducer';
-import { LoginIcon } from './LoginIcon/LoginIcon';
+
 import { urlAuth } from '../../../api/auth';
 import { Spinner } from '../../../UI/Spinner/Spinner';
+import Button from '@mui/material/Button';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Avatar from '@mui/material/Avatar';
 
 export const Auth = () => {
   const dispatch = useDispatch();
@@ -37,27 +41,31 @@ export const Auth = () => {
             target='_blank'
             href={`https://unsplash.com/@${auth?.data?.username}`}
             rel='noreferrer'>
-            <img
-              className={style.img}
+            <Avatar
+              alt={`Аватар ${auth.data.name}`}
               src={auth?.data?.img}
               title={auth?.data?.name}
-              alt={`Аватар ${auth.data.name}`}
             />
           </a>
 
-          <button className={style.login} type='button' onClick={getOut}>
+          <Button variant='contained' onClick={getOut}>
             {auth?.data?.name}
-          </button>
+          </Button>
+
           {showLogout && (
-            <button className={style.logout} onClick={logout}>
+            <Button variant='outlined' onClick={logout}>
+              <LogoutIcon />
               Выйти
-            </button>
+            </Button>
           )}
         </div>
       ) : (
-        <button type='button' className={style.auth} onClick={login}>
+        <Button
+          variant='outlined'
+          onClick={login}
+          aria-label='Войти в приложение'>
           <LoginIcon />
-        </button>
+        </Button>
       )}
     </>
   );

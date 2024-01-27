@@ -1,5 +1,6 @@
 import { PuffLoader } from 'react-spinners';
+import style from './Spinner.module.scss';
 
 export const Spinner = ({ size, color }) => (
-  <PuffLoader color={color} size={size} />
+  <PuffLoader className={style.spinner} color={color} size={size} />
 );

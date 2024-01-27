@@ -3,13 +3,14 @@ import style from './Header.module.scss';
 import { Container } from '../Container/Container';
 import { Logo } from './Logo/Logo';
 import { Auth } from './Auth/Auth';
+import { Link } from 'react-router-dom';
 
 export const Header = () => (
   <header className={style.header}>
     <Container className={style.container}>
-      <a href='/' className={style.logo}>
+      <Link to='/' className={style.logo}>
         <Logo />
-      </a>
+      </Link>
       <Auth />
     </Container>
   </header>
