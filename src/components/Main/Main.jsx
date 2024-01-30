@@ -12,7 +12,7 @@ export const Main = () => {
       <Container>
         <Routes>
           <Route path='/' element={<PhotosList />} />
-          <Route path='/photo' element={<PhotoPage />} />
+          <Route path='/photo/:id' element={<PhotoPage />} />
         </Routes>
       </Container>
     </main>

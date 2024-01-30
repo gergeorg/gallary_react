@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.img {
+  max-height: 70vh;
+  max-width: 80%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.list {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}

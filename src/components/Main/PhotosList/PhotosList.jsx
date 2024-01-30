@@ -4,15 +4,17 @@ import { photosRequestAsync } from '../../../store/photos/photosAction';
 
 // import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DownloadIcon from '@mui/icons-material/Download';
-import { Avatar, ImageList } from '@mui/material';
+import { ImageList } from '@mui/material';
 
 import style from './PhotosList.module.scss';
 import { firstPhotos } from '../../../store/photos/photosSlice';
-import { formatDate } from '../../../utils/formatDate';
 import { Spinner } from '../../../UI/Spinner/Spinner';
 import { generateRandomId } from '../../../utils/generateRandomId';
 import { LikeButton } from '../../LikeButton/LikeButton';
 import { Link } from 'react-router-dom';
+import { UpBtn } from '../../../UI/UpBtn/UpBtn';
+import { UserInfo } from '../../UserInfo/UserInfo';
+import { Date } from '../../Date/Date';
 
 export const PhotosList = () => {
   const dispatch = useDispatch();
@@ -59,10 +61,10 @@ export const PhotosList = () => {
           <div
             key={`${item.id}${generateRandomId()}`}
             className={style.wrapper}>
-            <Link to='/photo'>
+            <Link to={`/photo/${item.id}`}>
               <img src={item.urls.small} alt={item.alt_description} />
             </Link>
-            {/* <img src={item.urls.small} alt={item.alt_description} /> */}
+
             <a
               className={style.download}
               href={item.links.download}
@@ -71,30 +73,21 @@ export const PhotosList = () => {
               <DownloadIcon color='primary' />
             </a>
 
-            <LikeButton likes={item.likes} />
+            <LikeButton className={style.like} likes={item.likes} />
 
             <div className={style.info}>
-              <div className={style.userInfo}>
-                <Avatar
-                  alt={`Аватар ${item.user.username}`}
-                  src={item.user.profile_image.small}
-                  title={item.user.username}
-                  sx={{ width: 24, height: 24 }}
-                />
-                <a
-                  className={style.name}
-                  target='_blank'
-                  href={`https://unsplash.com/@${item.user.username}`}
-                  rel='noreferrer'>
-                  {item.user.name}
-                </a>
-              </div>
-              <time className={style.date} dateTime={item.date}>
-                {formatDate(item.created_at)}
-              </time>
+              <UserInfo
+                username={item.user.username}
+                image={item.user.profile_image.small}
+                name={item.user.name}
+              />
+
+              <Date date={item.created_at} />
             </div>
           </div>
         ))}
+
+        <UpBtn />
       </ImageList>
 
       {page !== 1 && loading && <Spinner size={50} color='#36d7b7' />}
