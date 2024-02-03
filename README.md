@@ -2,7 +2,7 @@
 
 ### Demo
 
-[https://blogget-eta.vercel.app/](https://gallary-react-delta.vercel.app/)
+[https://gallary-react-delta.vercel.app/](https://gallary-react-delta.vercel.app/)
 
 ### Used:
 - [vite](https://vitejs.dev/)
