@@ -9,7 +9,11 @@ import DownloadIcon from '@mui/icons-material/Download';
 export const PhotoCard = ({ data, likes }) => (
   <div className={style.wrapper}>
     <Link to={`/photo/${data.id}`}>
-      <img src={data.urls.small} alt={data.alt_description} />
+      <img
+        className={style.img}
+        src={data.urls.small}
+        alt={data.alt_description}
+      />
     </Link>
 
     <a

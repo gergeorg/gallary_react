@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { photosRequestAsync } from '../../../store/photos/photosAction';
 import { firstPhotos } from '../../../store/photos/photosSlice';
-import { ImageList } from '@mui/material';
+import { ImageList, useMediaQuery } from '@mui/material';
 import { Spinner } from '../../../UI/Spinner/Spinner';
 import { UpBtn } from '../../../UI/UpBtn/UpBtn';
 import { generateRandomId } from '../../../utils/generateRandomId';
@@ -16,6 +16,14 @@ export const PhotosList = () => {
   const error = useSelector((state) => state.photos.error);
   const page = useSelector((state) => state.photos.page);
   const endList = useRef(null);
+
+  const matches = useMediaQuery('(min-width: 768px)');
+  const matches767 = useMediaQuery('(max-width: 767px)');
+  const matches520 = useMediaQuery('(max-width: 520px)');
+  let cols = matches ? (matches767 ? 2 : 4) : 2;
+  if (matches520) {
+    cols = 1;
+  }
 
   useEffect(() => {
     dispatch(firstPhotos());
@@ -49,7 +57,7 @@ export const PhotosList = () => {
     <>
       {loading && <Spinner size={100} color='#c0f0f0' />}
 
-      <ImageList variant='masonry' cols={4} gap={8}>
+      <ImageList variant='masonry' cols={cols} gap={8}>
         {photos.map((item) => (
           <PhotoCard
             data={item}
