@@ -8,7 +8,7 @@
 - [vite](https://vitejs.dev/)
 - [API Unsplash](https://unsplash.com/documentation/)
 - [OAuth Unsplash](https://unsplash.com/documentation/user-authentication-workflow#authorization-workflow)
-- [Redux Toolkit](https://redux-toolkit.js.org/) used in posts, comments
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 - [React Router](https://reactrouter.com/en/main)
 - [React Spinners](https://www.davidhu.io/react-spinners/)
 - [MUI](https://mui.com/) 
