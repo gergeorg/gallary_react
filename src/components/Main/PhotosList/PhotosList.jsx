@@ -1,20 +1,13 @@
+import style from './PhotosList.module.scss';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { photosRequestAsync } from '../../../store/photos/photosAction';
-
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import DownloadIcon from '@mui/icons-material/Download';
-import { ImageList } from '@mui/material';
-
-import style from './PhotosList.module.scss';
 import { firstPhotos } from '../../../store/photos/photosSlice';
+import { ImageList } from '@mui/material';
 import { Spinner } from '../../../UI/Spinner/Spinner';
-import { generateRandomId } from '../../../utils/generateRandomId';
-import { LikeButton } from '../../LikeButton/LikeButton';
-import { Link } from 'react-router-dom';
 import { UpBtn } from '../../../UI/UpBtn/UpBtn';
-import { UserInfo } from '../../UserInfo/UserInfo';
-import { Date } from '../../Date/Date';
+import { generateRandomId } from '../../../utils/generateRandomId';
+import { PhotoCard } from './PhotoCard/PhotoCard';
 
 export const PhotosList = () => {
   const dispatch = useDispatch();
@@ -58,33 +51,11 @@ export const PhotosList = () => {
 
       <ImageList variant='masonry' cols={4} gap={8}>
         {photos.map((item) => (
-          <div
+          <PhotoCard
+            data={item}
             key={`${item.id}${generateRandomId()}`}
-            className={style.wrapper}>
-            <Link to={`/photo/${item.id}`}>
-              <img src={item.urls.small} alt={item.alt_description} />
-            </Link>
-
-            <a
-              className={style.download}
-              href={item.links.download}
-              target='_blank'
-              rel='noreferrer'>
-              <DownloadIcon color='primary' />
-            </a>
-
-            <LikeButton className={style.like} likes={item.likes} />
-
-            <div className={style.info}>
-              <UserInfo
-                username={item.user.username}
-                image={item.user.profile_image.small}
-                name={item.user.name}
-              />
-
-              <Date date={item.created_at} />
-            </div>
-          </div>
+            likes={item.likes}
+          />
         ))}
 
         <UpBtn />

@@ -27,3 +27,9 @@
   flex-wrap: wrap;
   margin-top: 15px;
 }
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

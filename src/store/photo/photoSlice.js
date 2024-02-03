@@ -5,12 +5,19 @@ const initialState = {
   loading: false,
   photo: {},
   error: '',
+  likes: 0,
+  likedByUser: false,
 };
 
 export const photoSlice = createSlice({
   name: 'photo',
   initialState,
-  reducers: {},
+  reducers: {
+    changeLike: (state) => {
+      state.likes += state.likedByUser ? -1 : 1;
+      state.likedByUser = !state.likedByUser;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(photoRequestAsync.pending, (state) => {
@@ -21,6 +28,8 @@ export const photoSlice = createSlice({
         state.loading = false;
         state.photo = action.payload.photo;
         state.error = action.payload.error;
+        state.likedByUser = action.payload.likedByUser;
+        state.likes = action.payload.likes;
       })
       .addCase(photoRequestAsync.rejected, (state, action) => {
         state.loading = false;
@@ -29,4 +38,5 @@ export const photoSlice = createSlice({
   },
 });
 
+export const { changeLike } = photoSlice.actions;
 export default photoSlice.reducer;

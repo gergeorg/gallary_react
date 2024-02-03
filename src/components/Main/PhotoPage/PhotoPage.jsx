@@ -14,6 +14,7 @@ export const PhotoPage = () => {
   const dispatch = useDispatch();
   const photo = useSelector((state) => state.photo.photo);
   const loading = useSelector((state) => state.photo.loading);
+  const { likes } = useSelector((state) => state.photo);
   const { id } = useParams();
 
   console.log('photo: ', photo);
@@ -31,11 +32,11 @@ export const PhotoPage = () => {
           <img
             className={style.img}
             src={photo?.urls?.regular}
-            alt={photo.alt_description}
+            alt={photo?.alt_description}
           />
           <div className={style.info}>
             <div className={style.control}>
-              <LikeButton likes={photo?.likes} />
+              <LikeButton likes={likes} id={id} />
 
               <a
                 className={style.download}
@@ -45,14 +46,16 @@ export const PhotoPage = () => {
                 <DownloadIcon color='primary' />
               </a>
             </div>
-            {/* <LikeButton likes={photo?.likes} /> */}
-            <UserInfo
-              username={photo?.user?.username}
-              image={photo?.user?.profile_image.small}
-              name={photo?.user?.name}
-            />
 
-            <Date date={photo?.created_at} />
+            <div className={style.userInfo}>
+              <UserInfo
+                username={photo?.user?.username}
+                image={photo?.user?.profile_image.small}
+                name={photo?.user?.name}
+              />
+
+              <Date date={photo?.created_at} />
+            </div>
           </div>
         </div>
         {photo?.tags && (
