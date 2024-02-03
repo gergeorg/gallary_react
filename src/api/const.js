@@ -4,6 +4,6 @@ export const API_URL_PHOTOS = `${API_URL}/photos`;
 export const API_URL_TOKEN = 'https://unsplash.com/oauth/token';
 export const ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
 export const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
-export const REDIRECT_URI = 'http://localhost:5173/';
+export const REDIRECT_URI = 'https://gallary-react-delta.vercel.app/';
 export const RESPONSE_TYPE = 'code';
 export const SCOPE = 'public read_user read_photos write_likes';
